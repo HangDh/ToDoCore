@@ -12,7 +12,9 @@
             <tr>
                 <td>&#x2714;</td>
                 <td>Item</td>
+                <td>Start</td>
                 <td>Due</td>
+                <td>Spend time</td>
             </tr>
         </thead>
         @foreach (var item in Model.Items)
@@ -22,7 +24,9 @@
                 <input type="checkbox" class="done-checkbox">
               </td>
               <td>@item.Title</td>
+              <td>@item.StartAt</td>
               <td>@item.DueAt</td>
+              <td>@item.TimeSpend</td>
           </tr>
         }
     </table>
