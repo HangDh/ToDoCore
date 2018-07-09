@@ -10,11 +10,22 @@ namespace ToDoCore.Models
 
         [Required]
         public string Title { get; set; }
-        public DateTimeOffset? DueAt { get; set; }
+        public DateTime DueAt { get; set; }
 
         public DateTime StartAt {get;set;}
-        public TimeSpan TimeSpend {get;set;}
+        public DateTime StopAt {get;set;}
+        public TimeSpan TimeSpend {
+            get {
+                return StopAt - StartAt;
+            }
+            set{}
+            }
 
-        public TimeSpan TimeRem {get;set;}
+        public TimeSpan TimeRem {
+            get{
+                return DueAt - StopAt;
+            }
+            set{}
+            }
     }
 }
