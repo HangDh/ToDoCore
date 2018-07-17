@@ -23,5 +23,18 @@ namespace ToDoCore.Services
                 .ToArrayAsync();
             return items;
         }
+
+        public async Task<bool> AddItemAsync(TodoItem newItem)
+        {
+            newItem.Id = Guid.NewGuid();
+            newItem.IsDone = false;
+            newItem.StartAt = DateTime.Now;
+            newItem.DueAt = DateTime.Now + TimeSpan.FromDays(3);
+
+            _context.Items.Add(newItem);
+
+            var saveResult = await _context.SaveChangesAsync();
+            return saveResult == 1;
+        }
     }
 }

@@ -5,7 +5,7 @@ using ToDoCore.Models;
 
 namespace ToDoCore.Services
 {
-    public class FakeTodoItemService : ITodoItemService
+    public class FakeTodoItemService // Not used anymore - changed, not implementing all methods of interface
     {
         public Task<TodoItem[]> GetIncompleteItemsAsync()
         {
