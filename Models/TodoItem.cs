@@ -23,7 +23,10 @@ namespace ToDoCore.Models
 
         public TimeSpan TimeRem {
             get{
-                return DueAt - StartAt;
+                if ((DueAt - StartAt) < TimeSpan.FromSeconds(0)) {
+                    return TimeSpan.FromSeconds(0);
+                }
+                else return DueAt - StartAt;
             }
             set{}
         }
