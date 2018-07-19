@@ -29,7 +29,6 @@ namespace ToDoCore.Services
             newItem.Id = Guid.NewGuid();
             newItem.IsDone = false;
             newItem.StartAt = DateTime.Now;
-            newItem.DueAt = DateTime.Now + TimeSpan.FromDays(3);
 
             _context.Items.Add(newItem);
 

@@ -19,13 +19,13 @@ namespace ToDoCore.Models
                 return StopAt - StartAt;
             }
             set{}
-            }
+        }
 
         public TimeSpan TimeRem {
             get{
-                return DueAt - StopAt;
+                return DueAt - StartAt;
             }
             set{}
-            }
+        }
     }
 }

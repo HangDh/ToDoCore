@@ -14,9 +14,7 @@
                 <td>&#x2714;</td>
                 <td>Item</td>
                 <td>Start</td>
-                <td>Stop</td>
                 <td>Due</td>
-                <td>Spend time</td>
                 <td>Rem time</td>
             </tr>
                 
@@ -29,9 +27,7 @@
             </td>
             <td>@item.Title</td>
             <td>@item.StartAt</td>
-            <td>@item.StopAt</td>
-            <td>@item.DueAt.Humanize()</td>
-            <td>@item.TimeSpend</td>
+            <td>@item.DueAt</td>
             <td>@item.TimeRem.Humanize()</td> 
           </tr>
         }
