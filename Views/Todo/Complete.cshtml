@@ -2,7 +2,7 @@
 @using Humanizer
 
 @{
-    ViewData["Title"] = "Manage todo list like a mfcker!";
+    ViewData["Title"] = "Check completed! todo list like a mfcker!";
 }
 
 <div class="panel panel-default todo-panel">
@@ -21,12 +21,9 @@
         </thead>
         @foreach (var item in Model.Items)
         {
-          <tr>
+          <tr class="done">
             <td>
-                <form asp-action="MarkDone" method="POST">
-                    <input type="checkbox" class="done-checkbox">
-                    <input type="hidden" name="id" value="@item.Id">
-                </form>
+                &#x2714;
             </td>
             <td>@item.Title</td>
             <td>@item.StartAt</td>
@@ -35,8 +32,4 @@
           </tr>
         }
     </table>
-
-    <div class="panel-footer add-item-form">
-        @await Html.PartialAsync("AddItemPartial", new TodoItem())
-    </div>
 </div>
