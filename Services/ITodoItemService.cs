@@ -6,8 +6,7 @@ namespace ToDoCore.Services
 {
     public interface ITodoItemService
     {
-        Task<TodoItem[]> GetIncompleteItemsAsync();
-        Task<TodoItem[]> GetCompleteItemsAsync();
+        Task<TodoItem[]> GetItemsAsync();
         Task<bool> AddItemAsync(TodoItem newItem);
         Task<bool> MarkDoneAsync(Guid id);
     }

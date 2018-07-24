@@ -16,19 +16,10 @@ namespace ToDoCore.Services
         {
             _context = context;
         }
-        public async Task<TodoItem[]> GetIncompleteItemsAsync()
-        {
-            var items = await _context.Items
-                .Where(x => x.IsDone == false)
-                .ToArrayAsync();
-            return items;
-        }
 
-        public async Task<TodoItem[]> GetCompleteItemsAsync()
+        public async Task<TodoItem[]> GetItemsAsync()
         {
-            var items = await _context.Items
-                .Where(x => x.IsDone == true)
-                .ToArrayAsync();
+            var items = await _context.Items.ToArrayAsync();
             return items;
         }
 

@@ -18,12 +18,11 @@ namespace TodoCore.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var items = await _todoItemService.GetIncompleteItemsAsync();
-            var itemsComplete = await _todoItemService.GetCompleteItemsAsync();
+            var items = await _todoItemService.GetItemsAsync();
 
             var model = new TodoViewModel()
             {
-                Items = items.Union(itemsComplete).ToArray()
+                Items = items
             };
 
             return View(model);
