@@ -34,7 +34,7 @@
                 <td>@item.StartAt</td>
                 <td>@item.DueAt</td>
                 <td>@item.TimeRem.Humanize(3)</td>
-                <td><a href="#" class="btn btn-primary btn-sm" role="button" aria-disabled="true">Edit</a></td> 
+                <td><a class="btn btn-primary btn-sm" role="button" aria-disabled="true" asp-controller="Todo" asp-action="Details" asp-route-id="@item.Id">Edit</a></td> 
             </tr>
             }
         }

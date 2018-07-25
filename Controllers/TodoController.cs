@@ -61,5 +61,22 @@ namespace TodoCore.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Details(Guid id)
+        {
+            if (id == Guid.Empty)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var item = await _todoItemService.GetItemIdAsync(id);
+
+            if (item == null)
+            {
+                return BadRequest("Could not find item.");
+            } 
+
+            return View(item);           
+        }
     }
 }

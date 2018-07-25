@@ -23,6 +23,14 @@ namespace ToDoCore.Services
             return items;
         }
 
+        public async Task<TodoItem> GetItemIdAsync(Guid? id)
+        {
+            var item = await _context.Items
+                .FirstOrDefaultAsync(i => i.Id == id);
+
+            return item;
+        }
+
         public async Task<bool> AddItemAsync(TodoItem newItem)
         {
             newItem.Id = Guid.NewGuid();

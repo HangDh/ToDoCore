@@ -1,0 +1,28 @@
+@model TodoItem
+@using Humanizer
+
+@{  
+    ViewData["Title"] = "Check your item: " + Model.Title + " - " + Model.Id;
+}
+
+<div class="panel panel-default todo-panel">
+    <div class="panel-heading">@ViewData["Title"]</div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Item</td>
+                <td>Start</td>
+                <td>Due</td>
+                <td>Rem time</td>
+                <td></td>
+            </tr>              
+        </thead>
+        <tr>
+            <td>@Model.Title</td>
+            <td>@Model.StartAt</td>
+            <td>@Model.DueAt</td>
+            <td>@Model.TimeRem.Humanize(3)</td> 
+        </tr>
+    </table>
+</div>
