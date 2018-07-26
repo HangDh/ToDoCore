@@ -14,21 +14,9 @@ namespace ToDoCore.Models
 
         public DateTime StartAt {get;set;}
         public DateTime StopAt {get;set;}
-        public TimeSpan TimeSpend {
-            get {
-                return StopAt - StartAt;
-            }
-            set{}
-        }
+        public TimeSpan TimeSpend {get;set;}
 
-        public TimeSpan TimeRem {
-            get{
-                if ((DueAt - StartAt) < TimeSpan.FromSeconds(0)) {
-                    return TimeSpan.FromSeconds(0);
-                }
-                else return DueAt - StartAt;
-            }
-            set{}
-        }
+        public TimeSpan TimeRem {get;set;}
+
     }
 }

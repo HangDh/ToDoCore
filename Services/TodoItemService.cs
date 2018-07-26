@@ -65,7 +65,19 @@ namespace ToDoCore.Services
 
             if (item == null) return false;
 
+            if (item.StopAt < DateTime.FromOADate(1)) {
+                item.TimeSpend = DateTime.Now - item.StartAt;
+            } else {
+                item.TimeSpend += DateTime.Now - item.StopAt;
+            }
+            
             item.StopAt = DateTime.Now;
+            
+            if (item.StopAt < DateTime.FromOADate(1)) {
+                item.TimeRem = item.DueAt - item.StartAt;
+            } else {
+                item.TimeRem = item.DueAt - item.StopAt;
+            }
 
             var saveResult = await _context.SaveChangesAsync();
             return saveResult == 1; // One entity should have been updated

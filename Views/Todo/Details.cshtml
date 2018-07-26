@@ -16,7 +16,7 @@
                 <td>Stop</td>
                 <td>Due</td>
                 <td>Rem time</td>
-                <td></td>
+                <td>Time Spend</td>
             </tr>              
         </thead>
         <tr>
@@ -25,6 +25,7 @@
             <td>@Model.StopAt</td>
             <td>@Model.DueAt</td>
             <td>@Model.TimeRem.Humanize(3)</td> 
+            <td>@Model.TimeSpend.Humanize(3)</td>
         </tr>
         <tr>
             <td>
