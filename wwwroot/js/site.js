@@ -8,6 +8,11 @@ $(document).ready(function() {
     $('.done-checkbox').on('click', function(e) {
         markCompleted(e.target);
     });
+
+    $(':button').on('click', function(e) {
+        makeStop(e.target);
+    });
+
 });
 
 function markCompleted(checkbox) {
@@ -17,5 +22,10 @@ function markCompleted(checkbox) {
     $(row).addClass('done');
 
     var form = checkbox.closest('form');
+    form.submit();
+}
+
+function makeStop(button) {
+    var form = button.closest('form');
     form.submit();
 }

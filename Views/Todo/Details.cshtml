@@ -13,6 +13,7 @@
             <tr>
                 <td>Item</td>
                 <td>Start</td>
+                <td>Stop</td>
                 <td>Due</td>
                 <td>Rem time</td>
                 <td></td>
@@ -21,8 +22,17 @@
         <tr>
             <td>@Model.Title</td>
             <td>@Model.StartAt</td>
+            <td>@Model.StopAt</td>
             <td>@Model.DueAt</td>
             <td>@Model.TimeRem.Humanize(3)</td> 
+        </tr>
+        <tr>
+            <td>
+                <form asp-action="StopNow" method="POST">
+                    <input type="button" class="btn btn-info" value="Stop Now!">
+                    <input type="hidden" name="id" value="@Model.Id">
+                </form>
+            </td>
         </tr>
     </table>
 </div>

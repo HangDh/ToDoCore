@@ -62,6 +62,24 @@ namespace TodoCore.Controllers
             return RedirectToAction("Index");
         }
 
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> StopNow(Guid id)
+        {
+            if (id == Guid.Empty)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var successful = await _todoItemService.StopTaskAsync(id);
+            if (!successful)
+            {
+                return BadRequest("Could not stop item now.");
+            }
+
+            return RedirectToAction("Details", new {id = id});
+        }
+
+
         public async Task<IActionResult> Details(Guid id)
         {
             if (id == Guid.Empty)

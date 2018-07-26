@@ -56,5 +56,19 @@ namespace ToDoCore.Services
             var saveResult = await _context.SaveChangesAsync();
             return saveResult == 1; // One entity should have been updated
         }
+
+        public async Task<bool> StopTaskAsync(Guid id)
+        {
+            var item = await _context.Items
+                .Where(x => x.Id == id)
+                .SingleOrDefaultAsync();
+
+            if (item == null) return false;
+
+            item.StopAt = DateTime.Now;
+
+            var saveResult = await _context.SaveChangesAsync();
+            return saveResult == 1; // One entity should have been updated
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace ToDoCore.Services
         Task<TodoItem[]> GetItemsAsync();
         Task<bool> AddItemAsync(TodoItem newItem);
         Task<bool> MarkDoneAsync(Guid id);
+        Task<bool> StopTaskAsync(Guid id);
         Task<TodoItem> GetItemIdAsync(Guid? id);
     }
 }
