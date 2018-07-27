@@ -13,6 +13,7 @@ namespace ToDoCore.Models
         public DateTime DueAt { get; set; }
 
         public DateTime StartAt {get;set;}
+        public DateTime PausedAt {get;set;}
         public DateTime StopAt {get;set;}
         public TimeSpan TimeSpend {get;set;}
 

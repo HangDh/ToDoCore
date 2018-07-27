@@ -9,7 +9,7 @@ $(document).ready(function() {
         markCompleted(e.target);
     });
 
-    $(':button').on('click', function(e) {
+    $('#Stop').on('click', function(e) {
         makeStop(e.target);
     });
 

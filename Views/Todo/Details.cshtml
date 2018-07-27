@@ -8,29 +8,43 @@
 <div class="panel panel-default todo-panel">
     <div class="panel-heading">@ViewData["Title"]</div>
 
-    <table class="table table-hover">
+    <table class="table">
         <thead>
             <tr>
-                <td>Item</td>
-                <td>Start</td>
-                <td>Stop</td>
-                <td>Due</td>
-                <td>Rem time</td>
-                <td>Time Spend</td>
-            </tr>              
+                <td class="property">Property</td><td>Value</td>
+            </tr>
         </thead>
-        <tr>
-            <td>@Model.Title</td>
-            <td>@Model.StartAt</td>
-            <td>@Model.StopAt</td>
-            <td>@Model.DueAt</td>
-            <td>@Model.TimeRem.Humanize(3)</td> 
-            <td>@Model.TimeSpend.Humanize(3)</td>
-        </tr>
+            <tr>
+                <td class="property">Title</td><td>@Model.Title</td>
+            </tr>
+            <tr>
+                <td class="property">Start</td><td>@Model.StartAt</td>    
+            </tr>
+            <tr>
+                <td class="property">Paused</td><td>@Model.PausedAt</td>
+            </tr>
+            <tr>
+                <td class="property">Stop</td><td>@Model.StopAt</td>
+            </tr>    
+            <tr>
+                <td class="property">Due</td><td>@Model.DueAt</td>
+            </tr>
+            <tr>
+                <td class="property">Rem time</td><td>@Model.TimeRem.Humanize(3)</td> 
+            </tr>
+            <tr>
+                <td class="property">Time Spend</td><td>@Model.TimeSpend.Humanize(3)</td>
+            </tr>   
         <tr>
             <td>
+                <form asp-action="PlayPause" method="POST">
+                    <input type="button" class="btn btn-warning" id="Pause" value="Pause">
+                    <input type="hidden" name="id" value="@Model.Id">
+                </form>
+            </td>
+            <td>
                 <form asp-action="StopNow" method="POST">
-                    <input type="button" class="btn btn-info" value="Stop Now!">
+                    <input type="button" class="btn btn-danger" id="Stop" value="Stop Now!">
                     <input type="hidden" name="id" value="@Model.Id">
                 </form>
             </td>
