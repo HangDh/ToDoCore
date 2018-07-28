@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ToDoCore.Data;
 
 namespace ToDoCore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180728111038_addItemUserId")]
+    partial class addItemUserId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -186,8 +188,6 @@ namespace ToDoCore.Data.Migrations
 
                     b.Property<bool>("IsDone");
 
-                    b.Property<bool>("IsPaused");
-
                     b.Property<DateTime>("PausedAt");
 
                     b.Property<DateTime>("StartAt");
@@ -200,8 +200,6 @@ namespace ToDoCore.Data.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired();
-
-                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 

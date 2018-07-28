@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ToDoCore.Data;
 using ToDoCore.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace ToDoCore.Services
@@ -17,13 +18,15 @@ namespace ToDoCore.Services
             _context = context;
         }
 
-        public async Task<TodoItem[]> GetItemsAsync()
+        public async Task<TodoItem[]> GetItemsAsync(IdentityUser user)
         {
-            var items = await _context.Items.ToArrayAsync();
+            var items = await _context.Items
+                                .Where(x => x.UserId == user.Id)
+                                .ToArrayAsync();
             return items;
         }
 
-        public async Task<TodoItem> GetItemIdAsync(Guid? id)
+        public async Task<TodoItem> GetItemIdAsync(Guid? id, IdentityUser user)
         {
             var item = await _context.Items
                 .FirstOrDefaultAsync(i => i.Id == id);
@@ -31,11 +34,12 @@ namespace ToDoCore.Services
             return item;
         }
 
-        public async Task<bool> AddItemAsync(TodoItem newItem)
+        public async Task<bool> AddItemAsync(TodoItem newItem, IdentityUser user)
         {
             newItem.Id = Guid.NewGuid();
             newItem.IsDone = false;
             newItem.StartAt = DateTime.Now;
+            newItem.UserId = user.Id;
 
             _context.Items.Add(newItem);
 
@@ -43,7 +47,7 @@ namespace ToDoCore.Services
             return saveResult == 1;
         }
 
-        public async Task<bool> MarkDoneAsync(Guid id)
+        public async Task<bool> MarkDoneAsync(Guid id, IdentityUser user)
         {
             var item = await _context.Items
                 .Where(x => x.Id == id)
@@ -57,7 +61,7 @@ namespace ToDoCore.Services
             return saveResult == 1; // One entity should have been updated
         }
 
-        public async Task<bool> StopTaskAsync(Guid id)
+        public async Task<bool> StopTaskAsync(Guid id, IdentityUser user)
         {
             var item = await _context.Items
                 .Where(x => x.Id == id)

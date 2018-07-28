@@ -1,15 +1,16 @@
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using ToDoCore.Models;
 
 namespace ToDoCore.Services
 {
     public interface ITodoItemService
     {
-        Task<TodoItem[]> GetItemsAsync();
-        Task<bool> AddItemAsync(TodoItem newItem);
-        Task<bool> MarkDoneAsync(Guid id);
-        Task<bool> StopTaskAsync(Guid id);
-        Task<TodoItem> GetItemIdAsync(Guid? id);
+        Task<TodoItem[]> GetItemsAsync(IdentityUser user);
+        Task<bool> AddItemAsync(TodoItem newItem, IdentityUser user);
+        Task<bool> MarkDoneAsync(Guid id, IdentityUser user);
+        Task<bool> StopTaskAsync(Guid id, IdentityUser user);
+        Task<TodoItem> GetItemIdAsync(Guid? id, IdentityUser user);
     }
 }
